@@ -12,3 +12,5 @@ class SMTPStream(object):
     def setPort(self, port):
         if IPAddress.validatePort(port):
             self.__smtpport = port
+    def sendMail(mailfrom, rcptto, data):
+        
