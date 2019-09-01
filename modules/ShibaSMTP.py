@@ -1,5 +1,4 @@
 import socket
-from ShibaDomains import IPAddress
 
 class SMTPMail(object):
     def __init__(self, mailfrom: str, rcptto: str, serveraddr: str = '127.0.0.1', smtpport: int = 25):
