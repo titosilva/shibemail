@@ -1,4 +1,5 @@
 import socket
+from ShibaTCP import ShibaTCPClient
 
 class SMTPError(Exception):
     pass
@@ -32,6 +33,7 @@ class SMTPMail(object):
         self.__serveraddr = serveraddr
         self.__smtpport = smtpport
         self.__helo = helo
+        self.__stream = ShibaTCPClient()
 
     # Functions that set private values
     def setMailFrom(self, mailfrom: str):
@@ -45,6 +47,8 @@ class SMTPMail(object):
             self.__smtpport = smtpport
         else:
             raise SMTPPortError
+    def setHelo(self, helo: str):
+        self.__helo = helo
 
     # Functions that get private values
     def getMailFrom(self):
@@ -55,100 +59,56 @@ class SMTPMail(object):
         return self.__serveraddr
     def getSMTPPort(self):
         return self.__smtpport
+    def setHelo(self, helo: str):
+        return self.__helo
 
     # Send message contained in msg
     def send(self, msg: str):
-        with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as tcp:
-            # Tries to connect to the server
-            try:
-                tcp.connect((self.__serveraddr, self.__smtpport))
-            except:
-                tcp.close()
-                raise SMTPNoConnection
-            
-            received = tcp.recv(1024)
+        try:
+            self.__stream.connect(self.__serveraddr, self.__smtpport)
+        except:
+            raise
 
-            # Verifies if server Answer is fine
-            if not int(received[0:3]) == 220:
-                tcp.close()
-                raise SMTPError
+        # Receives the first message
+        received = self.__stream.getMessage(1024)
 
-            print(1)
-            print(received)
+        # Verifies if received message was fine
+        if not int(received[0:3]) == 220:
+            raise SMTPError
 
-            # Send Helo
-            tcp.send(b'helo shibemail.com\r\n')
-            received = tcp.recv(1024)
+        # HELO message
+        received = self.__stream.require('HELO ' + self.__helo + '\r\n', 1024)
 
-            # Verifies if server Answer to Helo is fine
-            if not int(received[0:3]) == 250:
-                tcp.send(b'quit')
-                tcp.close()
-                raise SMTPHeloError
+        # Verifies if received message was fine
+        if not int(received[0:3]) == 250:
+            raise SMTPHeloError
+        
+        # MAIL FROM message
+        received = self.__stream.require('MAIL FROM: <' + self.__mailfrom + '> \r\n', 1024)
 
-            print(1)
-            print(received)
+        # Verifies if received message was fine
+        if not int(received[0:3]) == 250:
+            raise SMTPMailFromError
 
-            # Send mail from
-            tcp.send(bytes('mail from: <' + self.__mailfrom + '> \r\n', encoding='ascii'))
-            received = tcp.recv(1024)
+        # RCPT TO message
+        received = self.__stream.require('RCPT TO: <' + self.__mailfrom + '> \r\n', 1024)
 
-            # Verifies if server Answer to mail from is fine
-            if not int(received[0:3]) == 250:
-                tcp.send(b'quit')
-                tcp.close()
-                raise SMTPMailFromError
+        # Verifies if received message was fine
+        if not int(received[0:3]) == 250:
+            raise SMTPRcptToError
 
-            print(1)
+        # DATA message
+        received = self.__stream.require('DATA \r\n', 1024)
 
-            # Send rcpt to
-            tcp.send(bytes('rcpt to: <' + self.__rcptto + '> \r\n', encoding='ascii'))
-            received = tcp.recv(1024)
+        # Verifies if received message was fine
+        if not int(received[0:3]) == 354:
+            raise SMTPDataError
 
-            # Verifies if server Answer to rcpt tp is fine
-            if not int(received[0:3]) == 250:
-                tcp.send(b'quit')
-                tcp.close()
-                raise SMTPRcptToError
+        received = self.__stream.require(msg+'\r\n.\r\n', 1024)
 
-            print(1)
-            print(received
-            )
-            # Send 'data'
-            tcp.send(b'data\r\n')
-            received = tcp.recv(1024)
+        # Verifies if received message was fine
+        if not int(received[0:3]) == 250:
+            raise SMTPDataError
 
-            # Verifies server answer to 'data'
-            if not int(received[0:3]) == 354:
-                tcp.send(b'quit')
-                tcp.close()
-                raise SMTPDataError
-
-            # Sends the message
-            tcp.send(bytes(msg + '\r\n.\r\n', encoding='ascii'))
-            received = tcp.recv(1024)
-            
-            # Verifies server answer to message sent
-            if not int(received[0:3]) == 250:
-                tcp.send(b'quit')
-                tcp.close()
-                raise SMTPMsgError
-
-            print(received)
-
-            # Closes communication
-            tcp.send(b'quit\r\n')
-
-            received = tcp.recv(1024)
-            print(received)
-            
-            tcp.close()
-
-if __name__ == "__main__":
-    teste = SMTPMail(mailfrom = "ratchet@test.com", rcptto = "ratchet@shibemail.com")
-    try: 
-        teste.send('sent from shibasmtp mod')
-    except SMTPNoConnection:
-        print('Could not connect to server!')
-    except:
-        raise
+        self.__stream.sendMessage('quit\r\n')
+        
