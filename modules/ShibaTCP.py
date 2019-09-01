@@ -25,10 +25,7 @@ class ShibaTCPClient(object):
         if not self.__connected:
             raise Exception("Not connected to a server!")
 
-        r = self.__socket.recv(answerlength)
-        print(str(r))
-        return r
-        # return self.__socket.recv(answerlength)
+        return self.__socket.recv(answerlength)
 
     # Only sends a message
     def sendMessage(self, message):
