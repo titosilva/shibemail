@@ -74,9 +74,10 @@ class SMTPMail(object):
                 raise SMTPError
 
             print(1)
+            print(received)
 
             # Send Helo
-            tcp.send(b'helo shibemail.com')
+            tcp.send(b'helo shibemail.com\r\n')
             received = tcp.recv(1024)
 
             # Verifies if server Answer to Helo is fine
@@ -86,9 +87,10 @@ class SMTPMail(object):
                 raise SMTPHeloError
 
             print(1)
+            print(received)
 
             # Send mail from
-            tcp.send(bytes('mail from: <' + self.__mailfrom + '>', encoding='ascii'))
+            tcp.send(bytes('mail from: <' + self.__mailfrom + '> \r\n', encoding='ascii'))
             received = tcp.recv(1024)
 
             # Verifies if server Answer to mail from is fine
@@ -100,7 +102,7 @@ class SMTPMail(object):
             print(1)
 
             # Send rcpt to
-            tcp.send(bytes('rcpt to: <' + self.__rcptto + '>', encoding='ascii'))
+            tcp.send(bytes('rcpt to: <' + self.__rcptto + '> \r\n', encoding='ascii'))
             received = tcp.recv(1024)
 
             # Verifies if server Answer to rcpt tp is fine
@@ -110,9 +112,10 @@ class SMTPMail(object):
                 raise SMTPRcptToError
 
             print(1)
-
+            print(received
+            )
             # Send 'data'
-            tcp.send(b'data')
+            tcp.send(b'data\r\n')
             received = tcp.recv(1024)
 
             # Verifies server answer to 'data'
@@ -122,7 +125,7 @@ class SMTPMail(object):
                 raise SMTPDataError
 
             # Sends the message
-            tcp.send(bytes(msg + '\r\n.\r\n'))
+            tcp.send(bytes(msg + '\r\n.\r\n', encoding='ascii'))
             received = tcp.recv(1024)
             
             # Verifies server answer to message sent
@@ -131,8 +134,14 @@ class SMTPMail(object):
                 tcp.close()
                 raise SMTPMsgError
 
+            print(received)
+
             # Closes communication
-            tcp.send(b'quit')
+            tcp.send(b'quit\r\n')
+
+            received = tcp.recv(1024)
+            print(received)
+            
             tcp.close()
 
 if __name__ == "__main__":
