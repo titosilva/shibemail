@@ -1,5 +1,5 @@
 import socket
-from modules import ShibaTCP
+from modules.ShibaTCP import *
 
 class ShibaSMTPError(Exception):
     pass
@@ -91,7 +91,7 @@ class ShibaSMTPMail(object):
             raise ShibaSMTPMailFromError
 
         # RCPT TO message
-        received = self.__stream.require('RCPT TO: <' + self.__mailfrom + '> \r\n', 1024)
+        received = self.__stream.require('RCPT TO: <' + self.__rcptto + '> \r\n', 1024)
 
         # Verifies if received message was fine
         if not int(received[0:3]) == 250:
