@@ -1,5 +1,5 @@
 import socket
-from ShibaTCP import ShibaTCPClient
+from modules import ShibaTCP
 
 class ShibaSMTPError(Exception):
     pass
