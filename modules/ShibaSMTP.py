@@ -1,31 +1,31 @@
 import socket
 from ShibaTCP import ShibaTCPClient
 
-class SMTPError(Exception):
+class ShibaSMTPError(Exception):
     pass
 
-class SMTPNoConnection(SMTPError):
+class ShibaSMTPNoConnection(ShibaSMTPError):
     pass
 
-class SMTPHeloError(SMTPError):
+class ShibaSMTPHeloError(ShibaSMTPError):
     pass
         
-class SMTPMailFromError(SMTPError):
+class ShibaSMTPMailFromError(ShibaSMTPError):
     pass
 
-class SMTPRcptToError(SMTPError):
+class ShibaSMTPRcptToError(ShibaSMTPError):
     pass
 
-class SMTPDataError(SMTPError):
+class ShibaSMTPDataError(ShibaSMTPError):
     pass
 
-class SMTPMsgError(SMTPError):
+class ShibaSMTPMsgError(ShibaSMTPError):
     pass
 
-class SMTPPortError(SMTPError):
+class smtpportError(ShibaSMTPError):
     pass
 
-class SMTPMail(object):
+class ShibaSMTPMail(object):
     # Constructor
     def __init__(self, mailfrom: str, rcptto: str, serveraddr: str = '127.0.0.1', smtpport: int = 25, helo: str = 'shibemail.com'):
         self.__mailfrom = mailfrom
@@ -42,11 +42,11 @@ class SMTPMail(object):
         self.__rcptto = rcptto
     def setServerAddr(self, serveraddr: str):
         self.__serveraddr = serveraddr
-    def setSMTPPort(self, smtpport: int):
+    def setsmtpport(self, smtpport: int):
         if smtpport<65535 and smtpport>0:
             self.__smtpport = smtpport
         else:
-            raise SMTPPortError
+            raise smtpportError
     def setHelo(self, helo: str):
         self.__helo = helo
 
@@ -57,7 +57,7 @@ class SMTPMail(object):
         return self.__rcptto
     def getServerAddr(self):
         return self.__serveraddr
-    def getSMTPPort(self):
+    def getsmtpport(self):
         return self.__smtpport
     def setHelo(self, helo: str):
         return self.__helo
@@ -74,41 +74,41 @@ class SMTPMail(object):
 
         # Verifies if received message was fine
         if not int(received[0:3]) == 220:
-            raise SMTPError
+            raise ShibaSMTPError
 
         # HELO message
         received = self.__stream.require('HELO ' + self.__helo + '\r\n', 1024)
 
         # Verifies if received message was fine
         if not int(received[0:3]) == 250:
-            raise SMTPHeloError
+            raise ShibaSMTPHeloError
         
         # MAIL FROM message
         received = self.__stream.require('MAIL FROM: <' + self.__mailfrom + '> \r\n', 1024)
 
         # Verifies if received message was fine
         if not int(received[0:3]) == 250:
-            raise SMTPMailFromError
+            raise ShibaSMTPMailFromError
 
         # RCPT TO message
         received = self.__stream.require('RCPT TO: <' + self.__mailfrom + '> \r\n', 1024)
 
         # Verifies if received message was fine
         if not int(received[0:3]) == 250:
-            raise SMTPRcptToError
+            raise ShibaSMTPRcptToError
 
         # DATA message
         received = self.__stream.require('DATA \r\n', 1024)
 
         # Verifies if received message was fine
         if not int(received[0:3]) == 354:
-            raise SMTPDataError
+            raise ShibaSMTPDataError
 
         received = self.__stream.require(msg+'\r\n.\r\n', 1024)
 
         # Verifies if received message was fine
         if not int(received[0:3]) == 250:
-            raise SMTPDataError
+            raise ShibaSMTPDataError
 
         self.__stream.sendMessage('quit\r\n')
         
