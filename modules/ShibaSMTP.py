@@ -22,7 +22,7 @@ class ShibaSMTPDataError(ShibaSMTPError):
 class ShibaSMTPMsgError(ShibaSMTPError):
     pass
 
-class smtpportError(ShibaSMTPError):
+class ShibaSMTPPortError(ShibaSMTPError):
     pass
 
 class ShibaSMTPMail(object):
@@ -46,7 +46,7 @@ class ShibaSMTPMail(object):
         if smtpport<65535 and smtpport>0:
             self.__smtpport = smtpport
         else:
-            raise smtpportError
+            raise ShibaSMTPPortError
     def setHelo(self, helo: str):
         self.__helo = helo
 
@@ -67,7 +67,7 @@ class ShibaSMTPMail(object):
         try:
             self.__stream.connect(self.__serveraddr, self.__smtpport)
         except:
-            raise
+            raise ShibaSMTPNoConnection
 
         # Receives the first message
         received = self.__stream.getMessage(1024)
