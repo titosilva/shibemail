@@ -13,7 +13,7 @@ def send_click():
         mail.setServerAddr(ServerAddrEntry.get())
         mail.send(Mensagem)
     except ShibaSMTPNoConnection:
-        tk.messagebox.showerror("Shibemail error", "Could not connect to given server!")
+        tk.messagebox.showerror("Shibemail error", "Could not connect to server!")
     except ShibaSMTPRcptToError:
         tk.messagebox.showerror("Shibemail Error", "Rcpt to adress incorrect!")
     except ShibaSMTPMsgError:
@@ -21,7 +21,7 @@ def send_click():
     except ShibaSMTPError:
         tk.messagebox.showerror("Shibemail Error", "An Error ocurred")
     else:
-        tk.messagebox.showinfo("Mail sent successfully!")
+        tk.messagebox.showinfo("Shibemail", "Mail sent successfully!")
 
 root = tk.Tk()
 root.title("Welcome to Shibemail :)")
