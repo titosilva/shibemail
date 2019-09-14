@@ -1,4 +1,6 @@
 # Using sockets to create a tcp connection for the client
+# This module implements a class to connect to the server and carry 
+# all TCP details, thus creating some abstraction
 import socket
 
 class ShibaTCPClient(object):
@@ -19,6 +21,13 @@ class ShibaTCPClient(object):
             raise
         else:
             self.__connected = True
+
+    # Closes the connection, if it actually exists
+    def disconnect(self):
+        if self.__connected:
+            self.__socket.close()
+        else:
+            raise Exception("Not connected to a server!")
 
     # Only receives a message of max size answerlength and returns it
     def getMessage(self, answerlength: int) -> bytes:
@@ -42,6 +51,7 @@ class ShibaTCPClient(object):
         self.sendMessage(query)
         return self.getMessage(answerlength)
 
+    # This destructor makes shure the connection will be closed
     def __del__(self):
         if self.__connected:
             self.__socket.close()

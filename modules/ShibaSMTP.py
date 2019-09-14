@@ -22,11 +22,16 @@ class ShibaSMTPDataError(ShibaSMTPError):
 class ShibaSMTPMsgError(ShibaSMTPError):
     pass
 
-class smtpportError(ShibaSMTPError):
+class ShibaSMTPPortError(ShibaSMTPError):
     pass
 
 class ShibaSMTPMail(object):
     # Constructor
+    # Sets the default configurations to a mail message and
+    # creates a ShibaTCPClient that is used to send messages
+    # over a tcp connection and get aswers from the server
+    # The class ShibaTCPClient is implemented in the file
+    # ShibaTCP.py.
     def __init__(self, mailfrom: str, rcptto: str, serveraddr: str = '127.0.0.1', smtpport: int = 25, helo: str = 'shibemail.com'):
         self.__mailfrom = mailfrom
         self.__rcptto = rcptto
@@ -42,11 +47,11 @@ class ShibaSMTPMail(object):
         self.__rcptto = rcptto
     def setServerAddr(self, serveraddr: str):
         self.__serveraddr = serveraddr
-    def setsmtpport(self, smtpport: int):
+    def setSmtpPort(self, smtpport: int):
         if smtpport<65535 and smtpport>0:
             self.__smtpport = smtpport
         else:
-            raise smtpportError
+            raise ShibaSMTPPortError
     def setHelo(self, helo: str):
         self.__helo = helo
 
@@ -57,9 +62,9 @@ class ShibaSMTPMail(object):
         return self.__rcptto
     def getServerAddr(self):
         return self.__serveraddr
-    def getsmtpport(self):
+    def getSmtpPort(self):
         return self.__smtpport
-    def setHelo(self, helo: str):
+    def getHelo(self, helo: str):
         return self.__helo
 
     # Send message contained in msg
@@ -67,7 +72,7 @@ class ShibaSMTPMail(object):
         try:
             self.__stream.connect(self.__serveraddr, self.__smtpport)
         except:
-            raise
+            raise ShibaSMTPNoConnection
 
         # Receives the first message
         received = self.__stream.getMessage(1024)
@@ -111,4 +116,6 @@ class ShibaSMTPMail(object):
             raise ShibaSMTPDataError
 
         self.__stream.sendMessage('quit\r\n')
+
+        self.__stream.disconnect()
         
