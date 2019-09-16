@@ -58,7 +58,7 @@ class ShibaMIME(object):
             raise ShibaMIMEBadPath
         else:
             with open(pathToFile, 'r') as fp:
-                try:
+                try:    
                     textmime = MIMEText(fp.read())
                     self.__msg.attach(textmime)
                     self.__numofobj = self.__numofobj+1
@@ -70,12 +70,5 @@ class ShibaMIME(object):
         textmime = MIMEText(text)
         self.__msg.attach(textmime)
         self.__numofobj = self.__numofobj+1
-
-if __name__ == "__main__":
-    test = ShibaMIME("Alguem", "Voce")
-    test.addTextFromString("Jesus te ama")
-    # test.addImage("/home/titosilva/Pictures/ratchet_logo.png")
-    # test.addTextFromString("Jesus te ama muito mesmo")
-    print(test.getMessageAsString())
 
 
