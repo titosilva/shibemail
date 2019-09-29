@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_layout_file>
+	<FileVersion major="1" minor="0" />
+	<ActiveTarget name="Debug" />
+	<File name="ShibaRidesDomains.hpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="289" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="ShibaRidesEntitiesUT.cpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="8123" topLine="16" />
+		</Cursor>
+		<Folding>
+			<Collapse line="5" />
+			<Collapse line="9" />
+			<Collapse line="17" />
+			<Collapse line="21" />
+			<Collapse line="91" />
+			<Collapse line="96" />
+			<Collapse line="100" />
+			<Collapse line="145" />
+			<Collapse line="150" />
+			<Collapse line="154" />
+			<Collapse line="176" />
+			<Collapse line="187" />
+			<Collapse line="198" />
+			<Collapse line="209" />
+			<Collapse line="220" />
+			<Collapse line="231" />
+			<Collapse line="242" />
+			<Collapse line="253" />
+			<Collapse line="264" />
+			<Collapse line="277" />
+			<Collapse line="286" />
+			<Collapse line="295" />
+			<Collapse line="306" />
+			<Collapse line="317" />
+			<Collapse line="331" />
+		</Folding>
+	</File>
+	<File name="ShibaRidesEntitiesUT.hpp" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="196" topLine="1" />
+		</Cursor>
+		<Folding>
+			<Collapse line="9" />
+			<Collapse line="22" />
+		</Folding>
+	</File>
+	<File name="ShibaRidesDomainsUT.cpp" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="2" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="10605" topLine="399" />
+		</Cursor>
+	</File>
+	<File name="ShibaRidesDomainsUT.hpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="82" topLine="9" />
+		</Cursor>
+	</File>
+	<File name="main.cpp" open="1" top="1" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1102" topLine="36" />
+		</Cursor>
+	</File>
+	<File name="ShibaRidesEntities.hpp" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="4075" topLine="8" />
+		</Cursor>
+		<Folding>
+			<Collapse line="7" />
+			<Collapse line="10" />
+			<Collapse line="13" />
+			<Collapse line="18" />
+			<Collapse line="21" />
+			<Collapse line="26" />
+			<Collapse line="29" />
+			<Collapse line="34" />
+			<Collapse line="37" />
+			<Collapse line="42" />
+			<Collapse line="45" />
+			<Collapse line="57" />
+			<Collapse line="88" />
+		</Folding>
+	</File>
+	<File name="ShibaRidesDomains.cpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="283" topLine="93" />
+		</Cursor>
+	</File>
+</CodeBlocks_layout_file>

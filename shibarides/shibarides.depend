@@ -1,0 +1,166 @@
+# depslib dependency file v1.0
+1569757756 source:/home/titosilva/Documents/prog/shibarides/shibarides/main.cpp
+	<iostream>
+	"ShibaRidesDomains.hpp"
+	"ShibaRidesDomainsUT.hpp"
+	<iostream>
+	"ShibaRidesDomains.hpp"
+	"ShibaRidesDomainsUT.hpp"
+	<iostream>
+	"ShibaRidesDomains.hpp"
+	"ShibaRidesDomainsUT.hpp"
+	"ShibaRidesEntities.hpp"
+	"ShibaRidesEntitiesUT.hpp"
+
+1569444896 sDomainsUT.hpp"
+
+1569757431 source:/home/titosilva/Documents/prog/shibarides/shibarides/ShibaRidesDomains.cpp
+	"ShibaRidesDomains.hpp"
+	<iostream>
+	<vector>
+	"ShibaRidesDomains.hpp"
+	<iostream>
+	<vector>
+	"ShibaRidesDomains.hpp"
+	<iostream>
+	<vector>
+
+1569719298 
+
+1569757364 /home/titosilva/Documents/prog/shibarides/shibarides/ShibaRidesDomains.hpp
+	<stdexcept>
+	<string>
+	<stdexcept>
+	<string>
+	<stdexcept>
+	<string>
+
+1569442394 /home/titosilva/Documents/prog/shibarides/shibarides/ShibaRidesDomainsUT.hpp
+	"ShibaRidesDomains.hpp"
+	<vector>
+	"ShibaRidesDomains.hpp"
+	<vector>
+	"ShibaRidesDomains.hpp"
+	<vector>
+
+1569535781 source:/home/titosilva/Documents/prog/shibarides/shibarides/ShibaRidesDomainsUT.cpp
+	"ShibaRidesDomainsUT.hpp"
+	"ShibaRidesDomainsUT.hpp"
+	"ShibaRidesDomainsUT.hpp"
+
+1569720716 source:c:\users\pedro fernandes\desktop\shibarides-master\shibarides\main.cpp
+	<iostream>
+	"ShibaRidesDomains.hpp"
+	"ShibaRidesDomainsUT.hpp"
+	"ShibaRidesEntities.hpp"
+	"ShibaRidesEntitiesUT.hpp"
+
+1569719955 sEntitiesUT.hpp"
+
+1569540153 c:\users\pedro fernandes\desktop\shibarides-master\shibarides\shibaridesdomains.hpp
+	<stdexcept>
+	<string>
+
+1569710963 c:\users\pedro fernandes\desktop\shibarides-master\shibarides\shibaridesdomainsut.hpp
+	"ShibaRidesDomains.hpp"
+	<vector>
+
+1569540153 source:c:\users\pedro fernandes\desktop\shibarides-master\shibarides\shibaridesdomains.cpp
+	"ShibaRidesDomains.hpp"
+	<iostream>
+	<vector>
+
+1569540153 source:c:\users\pedro fernandes\desktop\shibarides-master\shibarides\shibaridesdomainsut.cpp
+	"ShibaRidesDomainsUT.hpp"
+
+1569442394 source:/home/titosilva/Documents/prog/shibarides/shibarides-master/shibarides/main.cpp
+	<iostream>
+	"ShibaRidesDomains.hpp"
+	"ShibaRidesDomainsUT.hpp"
+
+1569442394 /home/titosilva/Documents/prog/shibarides/shibarides-master/shibarides/ShibaRidesDomains.hpp
+	<stdexcept>
+	<string>
+
+1569442394 /home/titosilva/Documents/prog/shibarides/shibarides-master/shibarides/ShibaRidesDomainsUT.hpp
+	"ShibaRidesDomains.hpp"
+	<vector>
+
+1569445274 source:/home/titosilva/Documents/prog/shibarides/shibarides-master/shibarides/ShibaRidesDomains.cpp
+	"ShibaRidesDomains.hpp"
+	<iostream>
+	<vector>
+
+1569444896 source:/home/titosilva/Documents/prog/shibarides/shibarides-master/shibarides/ShibaRidesDomainsUT.cpp
+	"ShibaRidesDomainsUT.hpp"
+
+1569632130 source:c:\users\pedro fernandes\desktop\shibarides-master\shibarides\shibaridesentities.cpp
+	"ShibaRidesEntities.hpp"
+	"ShibaRidesDomains.hpp"
+
+1569711488 sDomains.hpp"
+
+1569711488 c:\users\pedro fernandes\desktop\shibarides-master\shibarides\shibaridesentities.hpp
+	"ShibaRidesDomains.hpp"
+
+1569719298 c:\users\pedro fernandes\desktop\shibarides-master\shibarides\shibaridesentitiesut.hpp
+	"ShibaRidesEntities.hpp"
+	"ShibaRidesDomains.hpp"
+	<vector>
+
+1569719955 source:c:\users\pedro fernandes\desktop\shibarides-master\shibarides\shibaridesentetiesut.cpp
+	"ShibaRidesEntitiesUT.hpp"
+
+1569755182 /home/titosilva/Documents/prog/shibarides/shibarides/ShibaRidesEntities.hpp
+	"ShibaRidesDomains.hpp"
+
+1569758620 /home/titosilva/Documents/prog/shibarides/shibarides/ShibaRidesEntitiesUT.hpp
+	"ShibaRidesEntities.hpp"
+	"ShibaRidesDomains.hpp"
+	<vector>
+
+1569757478 source:/home/titosilva/Documents/prog/shibarides/shibarides/ShibaRidesEntetiesUT.cpp
+	"ShibaRidesEntitiesUT.hpp"
+
+1569755182 source:/home/titosilva/Documents/prog/shibarides/shibarides/ShibaRidesEntities.cpp
+	"ShibaRidesEntities.hpp"
+	"ShibaRidesDomains.hpp"
+
+1569782408 source:c:\users\pedro fernandes\desktop\shibarides-temp\shibarides\shibaridesdomains.cpp
+	"ShibaRidesDomains.hpp"
+	<iostream>
+	<vector>
+
+1569782408 c:\users\pedro fernandes\desktop\shibarides-temp\shibarides\shibaridesdomains.hpp
+	<stdexcept>
+	<string>
+
+1569782408 source:c:\users\pedro fernandes\desktop\shibarides-temp\shibarides\shibaridesdomainsut.cpp
+	"ShibaRidesDomainsUT.hpp"
+
+1569782408 c:\users\pedro fernandes\desktop\shibarides-temp\shibarides\shibaridesdomainsut.hpp
+	"ShibaRidesDomains.hpp"
+	<vector>
+
+1569782408 source:c:\users\pedro fernandes\desktop\shibarides-temp\shibarides\shibaridesentities.cpp
+	"ShibaRidesEntities.hpp"
+	"ShibaRidesDomains.hpp"
+
+1569782408 c:\users\pedro fernandes\desktop\shibarides-temp\shibarides\shibaridesentities.hpp
+	"ShibaRidesDomains.hpp"
+
+1569798638 source:c:\users\pedro fernandes\desktop\shibarides-temp\shibarides\shibaridesentitiesut.cpp
+	"ShibaRidesEntitiesUT.hpp"
+
+1569797014 c:\users\pedro fernandes\desktop\shibarides-temp\shibarides\shibaridesentitiesut.hpp
+	"ShibaRidesEntities.hpp"
+	"ShibaRidesDomains.hpp"
+	<vector>
+
+1569798719 source:c:\users\pedro fernandes\desktop\shibarides-temp\shibarides\main.cpp
+	<iostream>
+	"ShibaRidesDomains.hpp"
+	"ShibaRidesDomainsUT.hpp"
+	"ShibaRidesEntities.hpp"
+	"ShibaRidesEntitiesUT.hpp"
+
